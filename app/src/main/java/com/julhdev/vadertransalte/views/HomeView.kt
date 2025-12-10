@@ -20,11 +20,12 @@ import androidx.compose.ui.unit.dp
 import com.julhdev.vadertransalte.components.MainDropDown
 import com.julhdev.vadertransalte.components.TopBar
 import com.julhdev.vadertransalte.data.Languages
+import com.julhdev.vadertransalte.viewModels.LanguageStoreViewModel
 
 @Composable
-fun HomeView(){
+fun HomeView(languageViewModel: LanguageStoreViewModel){
   Scaffold(
-    topBar = { TopBar() }
+    topBar = { TopBar(languageViewModel) }
   ) {innerPadding ->
     Column(
       verticalArrangement = Arrangement.Center,

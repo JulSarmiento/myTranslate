@@ -1,5 +1,7 @@
 package com.julhdev.vadertransalte.viewModels
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.julhdev.vadertransalte.data.repositories.LanguagesStoreRepository
@@ -20,11 +22,11 @@ class LanguageStoreViewModel @Inject constructor(
   private val repository: LanguagesStoreRepository
 ): ViewModel() {
 
-  private val _currentLanguage = repository.getStoreLaguage
+  private val _currentLanguage = repository.getStoreLanguage
     .stateIn(
       viewModelScope,
       SharingStarted.WhileSubscribed(100),
-      null
+      "en"
     )
 
   val currentLanguage = _currentLanguage
@@ -36,7 +38,13 @@ class LanguageStoreViewModel @Inject constructor(
    */
   fun saveLanguage(language: String) {
     viewModelScope.launch {
+
       repository.saveLanguage(language)
+
+      val localeTags = language.ifEmpty { "" }
+      val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(localeTags)
+
+      AppCompatDelegate.setApplicationLocales(appLocale)
     }
   }
 }

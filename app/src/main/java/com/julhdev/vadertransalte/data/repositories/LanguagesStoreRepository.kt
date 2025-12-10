@@ -14,7 +14,7 @@ class LanguagesStoreRepository @Inject constructor(
   private val languagesStore: LanguagesStore
 ) {
 
-  val getStoreLaguage: Flow<String> = languagesStore.getStoreLanguaje
+  val getStoreLanguage: Flow<String> = languagesStore.getStoreLanguage
 
   /**
    * Guarda el idioma seleccionado en el DataStore.

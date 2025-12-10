@@ -26,7 +26,7 @@ class  LanguagesStore @Inject constructor(
     val SELECTED_LANGUAGE = stringPreferencesKey("selected_language")
   }
 
-  val getStoreLanguaje: Flow<String> = context.dataStore.data
+  val getStoreLanguage: Flow<String> = context.dataStore.data
     .map { preferences ->
       preferences[SELECTED_LANGUAGE] ?: ""
     }
@@ -41,5 +41,4 @@ class  LanguagesStore @Inject constructor(
       preferences[SELECTED_LANGUAGE] = language
     }
   }
-
 }
