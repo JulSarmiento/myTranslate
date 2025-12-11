@@ -38,13 +38,7 @@ class LanguageStoreViewModel @Inject constructor(
    */
   fun saveLanguage(language: String) {
     viewModelScope.launch {
-
       repository.saveLanguage(language)
-
-      val localeTags = language.ifEmpty { "" }
-      val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(localeTags)
-
-      AppCompatDelegate.setApplicationLocales(appLocale)
     }
   }
 }

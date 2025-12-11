@@ -1,5 +1,6 @@
 package com.julhdev.vadertransalte.components
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,8 +13,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.core.os.LocaleListCompat
 import com.julhdev.vadertransalte.R
 import com.julhdev.vadertransalte.viewModels.LanguageStoreViewModel
+import kotlin.text.ifEmpty
 
 /**
  * Componente de TopAppBar con un título personalizado.
@@ -37,13 +40,13 @@ fun TopBar(languageViewModel: LanguageStoreViewModel) {
     actions = {
       IconButton(
         onClick = {
-          val current = languageViewModel.currentLanguage.value
-          // Si el actual es español, el nuevo es inglés; de lo contrario, el nuevo es español.
-          val newLanguage = if (current == "es") "en" else "es"
+          val current = languageViewModel.currentLanguage.value.ifEmpty { "" }
+          val newLanguage: String = if (current == "es") "en" else "es"
           languageViewModel.saveLanguage(newLanguage)
+          AppCompatDelegate.setApplicationLocales(
+            LocaleListCompat.forLanguageTags(newLanguage)
+          )
 
-          // IMPORTANTE: Debes disparar la recreación aquí si NO usas AppCompatDelegate.
-          // recreateActivity()
         }
       ) {
         Icon(
