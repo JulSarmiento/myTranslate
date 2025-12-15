@@ -3,6 +3,7 @@ package com.julhdev.vadertransalte.components
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -17,6 +18,7 @@ import androidx.core.os.LocaleListCompat
 import com.julhdev.vadertransalte.R
 import com.julhdev.vadertransalte.viewModels.LanguageStoreViewModel
 import kotlin.text.ifEmpty
+import androidx.compose.runtime.collectAsState
 
 /**
  * Componente de TopAppBar con un título personalizado.
@@ -25,6 +27,9 @@ import kotlin.text.ifEmpty
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(languageViewModel: LanguageStoreViewModel) {
+  val current = languageViewModel.currentLanguage.collectAsState()
+  val newLanguage: String = if (current.value == "en") "es" else "en"
+
   TopAppBar(
     title = {
       Text(
@@ -38,20 +43,18 @@ fun TopBar(languageViewModel: LanguageStoreViewModel) {
       titleContentColor = MaterialTheme.colorScheme.onPrimary
     ),
     actions = {
-      IconButton(
+      Button(
         onClick = {
-          val current = languageViewModel.currentLanguage.value.ifEmpty { "" }
-          val newLanguage: String = if (current == "es") "en" else "es"
+
           languageViewModel.saveLanguage(newLanguage)
           AppCompatDelegate.setApplicationLocales(
             LocaleListCompat.forLanguageTags(newLanguage)
           )
-
         }
       ) {
-        Icon(
-          imageVector = Icons.Filled.MoreVert,
-          contentDescription = "Localized description"
+        val languageIcon  = if (current.value == "en") "EN" else "ES"
+        Text(
+          text = languageIcon,
         )
       }
     }
