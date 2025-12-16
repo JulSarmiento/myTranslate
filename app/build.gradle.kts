@@ -14,7 +14,7 @@ android {
 
   defaultConfig {
     applicationId = "com.julhdev.vadertransalte"
-    minSdk = 31
+    minSdk = 33
     targetSdk = 36
     versionCode = 1
     versionName = "1.0"
@@ -54,7 +54,6 @@ dependencies {
 
   // Hilt
   implementation(libs.hilt.android)
-  implementation(libs.androidx.appcompat)
   ksp(libs.hilt.compiler)
 
   // DataStore

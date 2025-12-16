@@ -19,6 +19,9 @@ import com.julhdev.vadertransalte.R
 import com.julhdev.vadertransalte.viewModels.LanguageStoreViewModel
 import kotlin.text.ifEmpty
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import com.julhdev.vadertransalte.utils.LanguageManager
 
 /**
  * Componente de TopAppBar con un título personalizado.
@@ -27,6 +30,11 @@ import androidx.compose.runtime.collectAsState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(languageViewModel: LanguageStoreViewModel) {
+
+  val context = LocalContext.current
+  val languageManager = remember {
+    LanguageManager(context)
+  }
   val current = languageViewModel.currentLanguage.collectAsState()
   val newLanguage: String = if (current.value == "en") "es" else "en"
 
@@ -47,12 +55,10 @@ fun TopBar(languageViewModel: LanguageStoreViewModel) {
         onClick = {
 
           languageViewModel.saveLanguage(newLanguage)
-          AppCompatDelegate.setApplicationLocales(
-            LocaleListCompat.forLanguageTags(newLanguage)
-          )
+          languageManager.setLanguage(newLanguage)
         }
       ) {
-        val languageIcon  = if (current.value == "en") "EN" else "ES"
+        val languageIcon = if (current.value == "en") "EN" else "ES"
         Text(
           text = languageIcon,
         )

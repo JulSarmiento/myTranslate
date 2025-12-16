@@ -1,13 +1,11 @@
 package com.julhdev.vadertransalte.viewModels
 
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.julhdev.vadertransalte.data.repositories.LanguagesStoreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,14 +20,11 @@ class LanguageStoreViewModel @Inject constructor(
   private val repository: LanguagesStoreRepository
 ): ViewModel() {
 
-  private val _currentLanguage = repository.getStoreLanguage
-    .stateIn(
-      viewModelScope,
-      SharingStarted.WhileSubscribed(100),
-      "en"
-    )
-
+  private val _currentLanguage = MutableStateFlow<String?>(null)
   val currentLanguage = _currentLanguage
+
+  private val _storedLanguage = repository.getStoreLanguage
+  val storedLanguage = _storedLanguage
 
   /**
    * Guarda el idioma seleccionado en el DataStore.
@@ -39,6 +34,7 @@ class LanguageStoreViewModel @Inject constructor(
   fun saveLanguage(language: String) {
     viewModelScope.launch {
       repository.saveLanguage(language)
+      _currentLanguage.value = language
     }
   }
 }
