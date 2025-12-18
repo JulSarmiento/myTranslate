@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.julhdev.vadertransalte.components.MainDropDown
 import com.julhdev.vadertransalte.components.TopBar
 import com.julhdev.vadertransalte.data.Languages
-import com.julhdev.vadertransalte.viewModels.LanguageStoreViewModel
+import com.julhdev.vadertransalte.viewModels.LangViewModel
 
 @Composable
-fun HomeView(languageViewModel: LanguageStoreViewModel){
+fun HomeView(languageViewModel: LangViewModel){
   Scaffold(
     topBar = { TopBar(languageViewModel) }
   ) {innerPadding ->
