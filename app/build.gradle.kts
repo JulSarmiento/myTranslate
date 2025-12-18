@@ -59,6 +59,9 @@ dependencies {
   // DataStore
   implementation(libs.androidx.datastore.preferences)
 
+  // MLKit
+  implementation(libs.google.mlkit.translate)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
