@@ -62,6 +62,9 @@ dependencies {
   // MLKit
   implementation(libs.google.mlkit.translate)
 
+  // Flagkit
+  implementation(libs.murgupluoglu.flagkit)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

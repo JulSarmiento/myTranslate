@@ -13,6 +13,7 @@ dataStore = "1.2.0"
 materialicons = "1.7.8"
 material = "1.13.0"
 mlkit = "17.0.3"
+flagkit = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +43,8 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 # MlKit
 google-mlkit-translate = { group = "com.google.mlkit", name = "translate", version.ref = "mlkit" }
 
+# FlagKit
+murgupluoglu-flagkit = { group = "com.github.murgupluoglu", name = "flagkit-android", version.ref = "flagkit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

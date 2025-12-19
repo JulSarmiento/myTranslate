@@ -69,10 +69,6 @@ fun HomeViewContent(translateViewModel: TranslateViewModel) {
   val context = LocalContext.current
   val keyBoardController = LocalSoftwareKeyboardController.current
 
-  Text(
-    text = "Vader Translate",
-    modifier = Modifier.padding(10.dp)
-  )
   Row(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Center
