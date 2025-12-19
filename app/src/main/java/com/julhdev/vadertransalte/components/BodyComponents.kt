@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -77,9 +78,14 @@ fun MainDropDown(
       Box(
         modifier = Modifier
           .padding(horizontal = 10.dp)
-          .size(36.dp)
-          .clip(CircleShape)
-          .background(MaterialTheme.colorScheme.surfaceVariant),
+          .size(40.dp)
+          .clip(
+            RoundedCornerShape(12.dp)
+          )
+          .background(
+            MaterialTheme.colorScheme.surfaceVariant,
+            shape = MaterialTheme.shapes.extraLarge
+          ),
         contentAlignment = Alignment.Center
       ) {
         Image(
@@ -87,8 +93,10 @@ fun MainDropDown(
           contentDescription = "Bandera de ${list[selectedItem].label}",
           contentScale = ContentScale.Crop,
           modifier = Modifier
-            .size(32.dp)
-            .clip(CircleShape)
+            .size(36.dp)
+            .clip(
+              RoundedCornerShape(12.dp)
+            )
         )
       }
       Column(

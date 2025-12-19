@@ -59,10 +59,10 @@ fun HomeView(
   ) { innerPadding ->
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.Center,
       modifier = Modifier
         .fillMaxSize()
         .padding(innerPadding)
+        .padding(top = 10.dp)
     ) {
       HomeViewContent(translateViewModel)
     }
