@@ -5,22 +5,28 @@ import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import com.google.mlkit.common.model.DownloadConditions
 import com.julhdev.vadertransalte.translator.TranslateState
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
+import com.julhdev.vadertransalte.R
 
 /**
  * ViewModel para la traducción de texto.
  * @usage TranslateViewModel()
  */
 class TranslateViewModel: ViewModel() {
-
   var state by mutableStateOf(TranslateState())
     private set
 
+  /**
+   * Actualiza el valor del texto a traducir.
+   * @param text Nuevo valor del texto a traducir.
+   * @usage onValue(text)
+   */
   fun onValue(text: String){
     state = state.copy(textToTranslate = text)
   }
@@ -46,7 +52,7 @@ class TranslateViewModel: ViewModel() {
       .addOnSuccessListener {
         Toast.makeText(
           context,
-          "Downloaded Model",
+          context.getString(R.string.toast_downloaded_model),
           Toast.LENGTH_SHORT
         ).show()
         state = state.copy(isDownloadingModel = false)
@@ -54,7 +60,7 @@ class TranslateViewModel: ViewModel() {
       .addOnFailureListener {
         Toast.makeText(
           context,
-          "Download Failed",
+          context.getString(R.string.toast_downloaded_failed),
           Toast.LENGTH_SHORT
         ).show()
         state = state.copy(isDownloadingModel = false)
@@ -91,7 +97,7 @@ class TranslateViewModel: ViewModel() {
       .addOnFailureListener {
         Toast.makeText(
           context,
-          "Downloading Model",
+          context.getString(R.string.toast_downloading_model),
           Toast.LENGTH_LONG
         ).show()
         downloadModel(context, languageTranslator)

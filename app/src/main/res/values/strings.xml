@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Vader Transalte</string>
     <string name="app_title">Vader\'s Translate</string>
+
+    <string name="translate_to_input">Translate what you want...</string>
+    <string name="translate_button">Translate</string>
+
+    <string name="toast_downloading_model">Downloading model</string>
+    <string name="toast_downloaded_model">Downloaded model</string>
+    <string name="toast_downloaded_failed">Download failed</string>
+    <string name="toast_error">An error has occurred</string>
 </resources>

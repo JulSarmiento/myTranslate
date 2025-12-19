@@ -2,4 +2,14 @@
 <resources>
     <string name="app_name">Vader traduce</string>
     <string name="app_title">Vader traduce el dia de hoy</string>
+
+
+    <string name="translate_to_input">traduce lo que quieras...</string>.
+    <string name="translate_button">Traducir</string>
+
+
+    <string name="toast_downloading_model">Descargando modelo</string>
+    <string name="toast_downloaded_model">Modelo descargado</string>
+    <string name="toast_downloaded_failed">Descarga fallida</string>
+    <string name="toast_error">Ha ocurrido un error</string>
 </resources>

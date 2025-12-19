@@ -3,9 +3,11 @@ package com.julhdev.vadertransalte.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -54,22 +56,28 @@ fun MainDropDown(
   Box(
     contentAlignment = Alignment.Center,
     modifier = Modifier
-      .padding(5.dp)
-      .width(180.dp)
+      .width(
+        width = 150.dp
+      )
       .border(
         width = 1.dp,
-        color = MaterialTheme.colorScheme.onSurface,
+        color = MaterialTheme.colorScheme.outline,
         shape = MaterialTheme.shapes.extraLarge
       )
   ) {
     Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.Center,
       modifier = Modifier
-        .padding(5.dp)
+        .background(
+          color = MaterialTheme.colorScheme.surface,
+          shape = MaterialTheme.shapes.extraLarge
+        )
     ) {
       Box(
         modifier = Modifier
-          .padding(end = 5.dp)
-          .size(40.dp)
+          .padding(horizontal = 10.dp)
+          .size(36.dp)
           .clip(CircleShape)
           .background(MaterialTheme.colorScheme.surfaceVariant),
         contentAlignment = Alignment.Center
@@ -79,14 +87,17 @@ fun MainDropDown(
           contentDescription = "Bandera de ${list[selectedItem].label}",
           contentScale = ContentScale.Crop,
           modifier = Modifier
-            .size(36.dp)
+            .size(32.dp)
             .clip(CircleShape)
         )
       }
-      Column {
+      Column(
+        modifier = Modifier
+          .padding(vertical = 10.dp)
+      ) {
         Text(
           text = list[selectedItem].label,
-          fontSize = 20.sp,
+          fontSize = 18.sp,
           fontWeight = FontWeight.SemiBold
         )
         Text(
