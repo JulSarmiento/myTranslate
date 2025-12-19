@@ -2,6 +2,8 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.hilt)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -12,7 +14,7 @@ android {
 
   defaultConfig {
     applicationId = "com.julhdev.vadertransalte"
-    minSdk = 31
+    minSdk = 33
     targetSdk = 36
     versionCode = 1
     versionName = "1.0"
@@ -32,6 +34,7 @@ android {
   }
   kotlinOptions {
     jvmTarget = "11"
+    freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
   }
   buildFeatures {
     compose = true
@@ -47,6 +50,22 @@ dependencies {
   implementation(libs.androidx.compose.ui.graphics)
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.material.icons.extended)
+  implementation(libs.androidx.material)
+
+  // Hilt
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+
+  // DataStore
+  implementation(libs.androidx.datastore.preferences)
+
+  // MLKit
+  implementation(libs.google.mlkit.translate)
+
+  // Flagkit
+  implementation(libs.murgupluoglu.flagkit)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
