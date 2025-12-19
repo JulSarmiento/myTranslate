@@ -20,14 +20,14 @@ class LangViewModel @Inject constructor(
   @ApplicationContext private val context: Context
 ): ViewModel() {
 
-  private val _language = MutableStateFlow(readCurrentLanguate())
+  private val _language = MutableStateFlow(readCurrentLanguage())
   val language: StateFlow<String> = _language
 
   /**
    * Lee el idioma actual de la aplicación.
    * @return El idioma actual de la aplicación.
    */
-  private fun readCurrentLanguate(): String {
+  private fun readCurrentLanguage(): String {
     val locales = context
       .getSystemService(LocaleManager::class.java)
       .applicationLocales

@@ -90,7 +90,7 @@ fun HomeViewContent(translateViewModel: TranslateViewModel) {
   Spacer(
     modifier = Modifier.height(5.dp)
   )
-  Column() {
+  Column {
     TextField(
       value = state.textToTranslate,
       onValueChange = { translateViewModel.onValue(it) },

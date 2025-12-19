@@ -83,7 +83,7 @@ fun MainDropDown(
             .clip(CircleShape)
         )
       }
-      Column() {
+      Column {
         Text(
           text = list[selectedItem].label,
           fontSize = 20.sp,
